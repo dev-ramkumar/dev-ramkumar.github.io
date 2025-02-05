@@ -1,0 +1,23 @@
+
+<div id="a" class="s2 s3 a3 s4 a4 s5 a5 s6 a6 s7 a7 s8 a8 s9 a9 s10 a10 s11 a11 s12👨🏻‍🚀a12 ">hello</div>
+<div id="b"></div>
+<style >
+    .a3, a4, .a5, .a6, .a7, .a8, .a9, .a10, .a10, .a1, .a12 {
+        color: red;
+    }
+    .s2 {
+        background: blue;
+    }
+    .hh {
+        border: 1px solid yellow;
+    }
+</style>
+
+<script >
+    x = document.getElementById("a")
+    alert(x.classList)
+    x.classList.add("hh");
+    document.getElementById("b").innerHTML = x.outerHTML
+    
+</script>
+
