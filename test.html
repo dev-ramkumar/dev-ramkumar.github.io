@@ -1,23 +1,55 @@
-
-<div id="a" class="s2 s3 a3 s4 a4 s5 a5 s6 a6 s7 a7 s8 a8 s9 a9 s10 a10 s11 a11 s12👨🏻‍🚀a12 ">hello</div>
-<div id="b"></div>
-<style >
-    .a3, a4, .a5, .a6, .a7, .a8, .a9, .a10, .a10, .a1, .a12 {
-        color: red;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>App Deep Link Opener</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-    .s2 {
-        background: blue;
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
     }
-    .hh {
-        border: 1px solid yellow;
+    #message {
+      margin-top: 20px;
+      color: red;
     }
-</style>
+  </style>
+</head>
+<body>
+  <h2>Open App via Deep Link</h2>
+  <input type="text" id="deeplink" placeholder="Enter app deeplink, e.g., qwiktime://login" size="40"/>
+  <button onclick="openApp()">Open App</button>
+  <div id="message"></div>
 
-<script >
-    x = document.getElementById("a")
-    alert(x.classList)
-    x.classList.add("hh");
-    document.getElementById("b").innerHTML = x.outerHTML
-    
-</script>
+  <script>
+    function openApp() {
+      const link = document.getElementById("deeplink").value.trim();
+      const message = document.getElementById("message");
+      message.textContent = "";
 
+      if (!link) {
+        message.textContent = "Please enter a deep link.";
+        return;
+      }
+
+      const start = Date.now();
+
+      // Try to open the deep link
+      window.location.href = link;
+
+      // Fallback after 2 seconds if app not opened
+      setTimeout(() => {
+        const elapsed = Date.now() - start;
+        if (elapsed < 2000) {
+          message.textContent = "Failed to open app. It may not be installed.";
+        }
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
